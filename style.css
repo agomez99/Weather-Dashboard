@@ -1,0 +1,57 @@
+body {
+  color: black;
+  background-color: white;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+h2{
+font-size: 20px;
+}
+#citysearch,
+#zipsearch {
+  color: black;
+  font-size: 25pt;
+}
+.btn.btn-secondary {
+  color: black;
+  padding: 10px;
+  border-color: grey;
+  width: 23rem;
+  text-align: left;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.column {
+  float:left;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* Style the counter cards */
+.card {
+  display:block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  color:white;
+  text-align: center;
+  background-color: blue;
+  width:12em;
+  height:10em;
+}
