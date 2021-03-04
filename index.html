@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link
-         rel="stylesheet"
-         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-         />
-      <link
-         rel="stylesheet"
-         href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-         crossorigin="anonymous"
-         />
-      <link
-         href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-         rel="stylesheet"
-         />
-      <link rel="stylesheet" href="style.css">
-      <script src="weather.js"></script>
-   </head>
-   <body>
-      <div class="container-12 " id="page-container">
-         <header>
-            <div class=" text-center bg-dark text-light">
-               <h1 class="display-4"> <i class="fa fa-umbrella"></i>Weather Dashboard</h1>
-               </h1>
-               <p class="p-2"></p>
-            </div>
-         </header>
-         <main>
-            <div class="row">
-               <div class=" col-sm-12   col-lg-3 ">
-                  <div class="form-group  p-1">
-                     <label for="citySearchInput"><strong>Search for a city:</strong></label>
-                     <div class="input-group">
-                        <input  class="form-control" type="input" autocomplete="address-level2, address-level1" name="citySearchText" id="citySearchInput">
-                        <div class="form-group-append" >
-                           <button type="button" id="citySearchButton" class="btn-primary h-100"><i class="fas fa-search"></i></button>
-                        </div>
-                     </div>
-                     <div class="form-group mt-2" id="cityHistoryContainer">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Weather Dashboard</title>
+   <link rel="shortcut icon" type="image/jpg" href="weather.ico"/>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+   <link rel="stylesheet" href="style.css">
+   <script src="weather.js"></script>
+</head>
+
+<body>
+   <div class="container-12 " id="page-container">
+      <header>
+         <div class=" text-center bg-dark text-light">
+            <h1 class="display-4"> <i class="fa fa-umbrella"></i>Weather Dashboard</h1>
+            </h1>
+            <p class="p-2"></p>
+         </div>
+      </header>
+      <main>
+         <div class="row" >
+            <div class=" col-sm-6   col-lg-3 " id="search-div">
+               <div class="form-group  p-1" >
+                  <label for="citySearchInput"><strong>Search for a city:</strong></label>
+                  <div class="input-group">
+                     <input class="form-control" type="input" autocomplete="address-level2, address-level1"
+                        name="citySearchText" id="citySearchInput">
+                     <div class="form-group-append">
+                        <button type="button" id="citySearchButton" class="btn-primary h-100"><i
+                              class="fas fa-search"></i></button>
                      </div>
                   </div>
-               </div>
-               <div class="col" >
-                  <div class="col " id="forecastCurrentContainer">
-                  </div>
-                  <div class="col p-3 col-sm-9  text-white">
-                     <div class="row" id="forecastExtendedContainer">
-                     </div>
+                  <div class="form-group mt-2" id="cityHistoryContainer">
                   </div>
                </div>
             </div>
-            <!-- end of row 1 --> 
-         </main>
-      </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> 
-   </body>
+            <div class="col" id="forecast">
+               <div  id="forecastCurrentContainer">
+               </div>
+               <div class="col p-3 col-sm-9  text-white">
+                  <div class="row" id="forecastExtendedContainer" >
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end of row 1 -->
+      </main>
+   </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</body>
+
 </html>

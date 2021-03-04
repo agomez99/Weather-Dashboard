@@ -66,12 +66,13 @@ $(document).ready(() => {
       for (let i = 4; i < extendedResponse.list.length; i += 8) {
         $("#forecastExtendedContainer").append(
           $("<div>")
-            .addClass("col card bg-primary m-2 p-2")
+            .addClass("col card bg-primary m-1 p-1")
             .append(
               $("<h4>").text(
                 moment.unix(extendedResponse.list[i].dt).format("M/DD/YYYY")
               )
             )
+            
             .append(
               $("<img>").attr(
                 "src",
