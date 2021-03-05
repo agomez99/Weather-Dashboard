@@ -5,6 +5,8 @@
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>Weather Dashboard</title>
+   <script src="https://js.radar.io/v3/radar.min.js"></script>
+
    <link rel="shortcut icon" type="image/jpg" href="weather.ico"/>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <!-- Latest compiled and minified CSS -->
@@ -27,6 +29,12 @@
          </div>
       </header>
       <main>
+         <div>
+            <div id="country">
+               Loading...
+             </div>
+         </div>
+      </div>
          <div class="row" >
             <div class=" col-sm-6   col-lg-3 " id="search-div">
                <div class="form-group  p-1" >
@@ -51,10 +59,31 @@
                   </div>
                </div>
             </div>
-         </div>
-         <!-- end of row 1 -->
+
+         <div class="footer">
+            <p>Footer</p>
+          </div>
+          
       </main>
    </div>
+   <script type="text/javascript">
+      Radar.initialize("prj_test_pk_7d4f532aae6224d0a5aee517baaf6ba19a50190f");
+
+      Radar.ipGeocode(function(err, result) {
+        if (err) {
+          console.error(err);
+
+          return;
+        }
+
+        if (result && result.address) {
+          console.log(result.address);
+
+          document.getElementById("country").innerHTML = "<h4>"+ "Your current city is " + 
+            result.address.city + ", " + result.address.state + " " +  result.address.countryCode ;
+        }
+      });
+    </script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
