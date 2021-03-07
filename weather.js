@@ -6,13 +6,13 @@ $(document).ready(() => {
     addButton(priorCities[i]);
   }
   // Get the weather info of the most recently input city from local storage memory
-   if (priorCities[0] != null || priorCities[0] != undefined){
-     getWeatherInfo(priorCities[0]);
-   }
+  if (priorCities[0] != null || priorCities[0] != undefined) {
+    getWeatherInfo(priorCities[0]);
+  }
 
   // capture citySearchInput value with search button click if text is not blank
   // ajax call the Weather API to get weather data of the input city
-  $("#citySearchButton").click(function(event) {
+  $("#citySearchButton").click(function (event) {
     event.preventDefault();
 
     if ($("#citySearchInput").val() != "") {
@@ -39,34 +39,40 @@ $(document).ready(() => {
     let key = "appid=fe92d0ea72a5a2dbcd2810e284c670b1";
     let units = "&units=Imperial";
     let city = "?q=" + checkCity;
+    let count = "&cnt=5";
 
     $.ajax({
       url: urlForecastPrefix + city + units + "&" + key + "&mode=json",
       method: "GET",
-      success: function() {
+      success: function () {
         addButton(checkCity);
       },
-      error: function() {
+      error: function () {
         alert("No Info Available for User Input");
       }
-    }).then(function(response) {
+    }).then(function (response) {
       updateWeather(response);
     });
 
     // Now get 5 day extended forecast
     $.ajax({
       url: urlFiveDayPrefix + city + units + "&" + key,
+      // url :urlFiveDayPrefix + city + count + "&" + key,
+
       method: "GET",
-      error: function() {
+      error: function () {
         console.log("Extended Forecast Not Available");
       }
-    }).then(function(extendedResponse) {
+    }).then(function (extendedResponse) {
       $("#forecastExtendedContainer").empty();
+
       // using 12 noon as time of day to display weather
       for (let i = 4; i < extendedResponse.list.length; i += 8) {
+        console.log(extendedResponse.list[i])
+
         $("#forecastExtendedContainer").append(
           $("<div>")
-            .addClass("col card bg-primary m-2 p-2")
+            .addClass("col card m-1 p-1")
             .append(
               $("<h4>").text(
                 moment.unix(extendedResponse.list[i].dt).format("M/DD/YYYY")
@@ -76,22 +82,31 @@ $(document).ready(() => {
               $("<img>").attr(
                 "src",
                 "https://openweathermap.org/img/wn/" +
-                  extendedResponse.list[i].weather[0].icon +
-                  ".png"
+                extendedResponse.list[i].weather[0].icon +
+                ".png"
               )
             )
             .append(
               $("<p>").text(
-                "Temp: " +
-                  extendedResponse.list[i].main.temp +
-                  String.fromCharCode(176) +
-                  "F"
+                extendedResponse.list[i].main.temp +
+                String.fromCharCode(176) +
+                "F"
               )
             )
             .append(
-              $("<p>").text(
-                "Humidity: " + extendedResponse.list[i].main.humidity
-              )
+              $("<div>").css('display', 'inline-flex')
+                .append(
+                  $("<img>").attr(
+                    "src",
+                    "https://i7.uihere.com/icons/134/219/647/humidity-6c59e8ec54fd8c483089471df0b8c1cc.svg"
+                  ).css({ "height": "20px", 'padding-right': '6px' })
+
+                )
+                .append(
+                  $("<p>").text(
+                    extendedResponse.list[i].main.humidity + "%"
+                  )
+                )
             )
         );
       }
@@ -111,13 +126,13 @@ $(document).ready(() => {
         lon +
         "&mode=json",
       method: "GET",
-      error: function() {
+      error: function () {
         alert("No UV Index available for stated location");
       }
-    }).done(function(uvResponse) {
+    }).done(function (uvResponse) {
       $(".uv-intensity")
         .text(uvResponse.value)
-        .css("color", "white")
+        .css("color", "black")
         .css("F=font-weight: bold");
       let uvRanges = [
         [0, 2.9, "#3EA72D"],
@@ -179,10 +194,15 @@ $(document).ready(() => {
   function updateWeather(data) {
     $("#forecastCurrentContainer").empty();
     $("#forecastCurrentContainer")
+
       .append(
+
         $("<h2>")
           .text(data.name + " " + moment().format("(M/d/YYYY)"))
           .addClass("d-inline")
+      )
+      .append(
+        $("<br>")
       )
       .append(
         $("<img>").attr(
@@ -190,6 +210,7 @@ $(document).ready(() => {
           "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
         )
       )
+
       .append(
         $("<p>").text(
           "Temperature: " + data.main.temp + String.fromCharCode(176) + "F"
@@ -209,6 +230,7 @@ $(document).ready(() => {
 
     // Get uv index
     getUVIndex(data.coord.lat, data.coord.lon);
+
   }
 
   // Function to convert a string to titleCase to correct user type on case
@@ -216,7 +238,7 @@ $(document).ready(() => {
     return str
       .toLowerCase()
       .split(" ")
-      .map(function(word) {
+      .map(function (word) {
         return word.charAt(0).toUpperCase() + word.slice(1);
       })
       .join(" ");

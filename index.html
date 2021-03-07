@@ -7,7 +7,7 @@
    <title>Weather Dashboard</title>
    <script src="https://js.radar.io/v3/radar.min.js"></script>
 
-   <link rel="shortcut icon" type="image/jpg" href="weather.ico"/>
+   <link rel="shortcut icon" type="image/jpg" href="weather.ico" />
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,58 +32,65 @@
          <div>
             <div id="country">
                Loading...
-             </div>
+            </div>
+         </div>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class=" col-sm-6   col-lg-3 " id="search-div">
+            <div class="form-group  p-1">
+               <label for="citySearchInput"><strong>Search for a city:</strong></label>
+               <div class="input-group">
+                  <input class="form-control" type="input" autocomplete="address-level2, address-level1"
+                     name="citySearchText" id="citySearchInput">
+                  <div class="form-group-append">
+                     <button type="button" id="citySearchButton" class="btn-primary h-100"><i
+                           class="fas fa-search"></i></button>
+                  </div>
+               </div>
+               <div class="form-group mt-2" id="cityHistoryContainer">
+               </div>
+            </div>
+         </div>
+         <div class="col p-3  text-white" >
+            <h1 style="color: black;">5 Day Forecast</h1>
+            <div class="row" id="forecastExtendedContainer">
+            </div>
          </div>
       </div>
-         <div class="row" >
-            <div class=" col-sm-6   col-lg-3 " id="search-div">
-               <div class="form-group  p-1" >
-                  <label for="citySearchInput"><strong>Search for a city:</strong></label>
-                  <div class="input-group">
-                     <input class="form-control" type="input" autocomplete="address-level2, address-level1"
-                        name="citySearchText" id="citySearchInput">
-                     <div class="form-group-append">
-                        <button type="button" id="citySearchButton" class="btn-primary h-100"><i
-                              class="fas fa-search"></i></button>
-                     </div>
-                  </div>
-                  <div class="form-group mt-2" id="cityHistoryContainer">
-                  </div>
-               </div>
+      <row>
+         <div class="col p-3" id="forecast">
+            <div id="forecastCurrentContainer">
             </div>
-            <div class="col" id="forecast">
-               <div  id="forecastCurrentContainer">
-               </div>
-               <div class="col p-3 col-sm-9  text-white">
-                  <div class="row" id="forecastExtendedContainer" >
-                  </div>
-               </div>
+         </div>
+         <div class="col p-3" id="forecast">
+            <div id="forecastCurrentContainer2">
             </div>
-
+         </div>
          <div class="footer">
-            <p>Footer</p>
-          </div>
-          
-      </main>
+            <i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
+         </div>
+   </div>
+   </main>
    </div>
    <script type="text/javascript">
-      Radar.initialize("prj_test_pk_7d4f532aae6224d0a5aee517baaf6ba19a50190f");
+      Radar.initialize("prj_live_sk_c3d04800106b28181cabc997e2de4bdb142fe89a");
 
-      Radar.ipGeocode(function(err, result) {
-        if (err) {
-          console.error(err);
+      Radar.ipGeocode(function (err, result) {
+         if (err) {
+            console.error(err);
 
-          return;
-        }
+            return;
+         }
 
-        if (result && result.address) {
-          console.log(result.address);
+         if (result && result.address) {
+            console.log(result.address);
 
-          document.getElementById("country").innerHTML = "<h4>"+ "Your current city is " + 
-            result.address.city + ", " + result.address.state + " " +  result.address.countryCode ;
-        }
+            document.getElementById("country").innerHTML = "<h4>" + "Your current city is " +
+               result.address.city + ", " + result.address.state + " " + result.address.countryCode;
+         }
       });
-    </script>
+   </script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
