@@ -47,7 +47,7 @@ white-space: nowrap;
   border-width: 1px;
   border-color: rgb(160, 159, 159);
   margin-right: 30px;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 }
 
 .btn.btn-secondary {
@@ -224,7 +224,9 @@ white-space: nowrap;
       font-size: 0.8rem;
     }
  
- 
+    #country{
+      font-size: 2.5rem;
+    }
     .card {
 
       display:block;
@@ -234,7 +236,7 @@ white-space: nowrap;
       text-align: center;
       background-color: rgb(97, 97, 97);
       width:30rem;
-      height:6em;
+      height:6 em;
     
   }
 
