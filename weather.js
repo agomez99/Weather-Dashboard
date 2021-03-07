@@ -75,7 +75,7 @@ $(document).ready(() => {
             .addClass("col card m-1 p-1")
             .append(
               $("<h4>").text(
-                moment.unix(extendedResponse.list[i].dt).format("M/DD/YYYY")
+                moment.unix(extendedResponse.list[i].dt).format("M/DD/YY")
               )
             )
             .append(
@@ -99,15 +99,16 @@ $(document).ready(() => {
                   $("<img>").attr(
                     "src",
                     "https://i7.uihere.com/icons/134/219/647/humidity-6c59e8ec54fd8c483089471df0b8c1cc.svg"
-                  ).css({ "height": "20px", 'padding-right': '6px' })
+                  ).css({ "height": "20px", 'padding-right': '6px' }).addClass("humidctn")
 
                 )
                 .append(
                   $("<p>").text(
                     extendedResponse.list[i].main.humidity + "%"
-                  )
+                  ).addClass("humidctn")
                 )
             )
+
         );
       }
     });
@@ -192,13 +193,22 @@ $(document).ready(() => {
   }
 
   function updateWeather(data) {
+    $('#citypresent').empty()
+    $('#citypresent').append(
+      
+      $("<p1>").css("color","black")
+      .text("5 Day Forecast for " + data.name)
+    )
     $("#forecastCurrentContainer").empty();
     $("#forecastCurrentContainer")
-
+      .append(
+        $("<h2>")
+          .text(data.name)
+      )
       .append(
 
         $("<h2>")
-          .text(data.name + " " + moment().format("(M/d/YYYY)"))
+          .text( moment().format('MMMM Do YYYY'))
           .addClass("d-inline")
       )
       .append(
