@@ -22,7 +22,22 @@
 
    <script src="weather.js"></script>
    <script src="map/currentWeatherData.js"></script>
+   <script type="text/javascript">
+      Radar.initialize("prj_live_sk_c3d04800106b28181cabc997e2de4bdb142fe89a");
 
+      Radar.ipGeocode(function (err, result) {
+         if (err) {
+            console.error(err);
+            return;
+         }
+         if (result && result.address) {
+            console.log(result.address);
+               document.getElementById("country").innerHTML = "<h3>" + "Your current city is " +   result.address.city;
+              document.getElementById("citySearchInput").value = result.address.city;
+
+         }
+      });
+   </script>
    <style>
       body, html { margin: 0; padding: 0; }
       #left, #right {  height: 100vh }
@@ -88,8 +103,9 @@
          <div class="col">
             <div id="">
                <div id="controls">
-                 Location:<br />
-                 <input class="text" id="location" type="text" />
+                  <h1>Weather Map</h1>
+                 Enter Location:<br />
+                 <input class="text" id="location" type="text"   />
                  <br /><br />
                  Weather Layer:<br />
                  <select onchange="updateLayer(this)">
@@ -105,7 +121,7 @@
                  <input type="radio" name="units" value="metric" onchange="updateUnits(this)">℃</input>
                  <input type="radio" name="units" value="imperial" checked onchange="updateUnits(this)">℉</input>
                  <br /><br />
-                 <input type="button" value="Search" onclick="findLocation()" />
+                 <input type="button" value="Search" onclick=findLocation() />
                </div>
              </div>
             <div id="right">
@@ -117,24 +133,7 @@
          </div>
    </main>
    </div>
-   <script type="text/javascript">
-      Radar.initialize("prj_live_sk_c3d04800106b28181cabc997e2de4bdb142fe89a");
 
-      Radar.ipGeocode(function (err, result) {
-         if (err) {
-            console.error(err);
-
-            return;
-         }
-
-         if (result && result.address) {
-            console.log(result.address);
-
-            document.getElementById("country").innerHTML = "<h3>" + "Your current city is " +
-               result.address.city + ", " + result.address.state + " " + result.address.countryCode;
-         }
-      });
-   </script>
        <script src="map/weather.js"></script>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
