@@ -33,7 +33,6 @@
          if (result && result.address) {
             console.log(result.address);
                document.getElementById("country").innerHTML = "<h3>" + "Your current city is " +   result.address.city;
-              document.getElementById("citySearchInput").value = result.address.city;
 
          }
       });
@@ -62,11 +61,11 @@
          </div>
       </header>
       <main>
-         <div>
+         <!-- <div>
             <div id="country">
                Loading...
             </div>
-         </div>
+         </div> -->
    </div>
    <div class="container">
       <div class="row">
@@ -81,6 +80,7 @@
                            class="fas fa-search"></i></button>
                   </div>
                </div>
+               <p>Previous Searches</p>
                <div class="form-group mt-2" id="cityHistoryContainer">
                </div>
             </div>
@@ -129,7 +129,6 @@
              </div>
       </row>
       <div class="footer">
-         <i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
          </div>
    </main>
    </div>

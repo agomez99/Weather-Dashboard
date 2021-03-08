@@ -1,6 +1,5 @@
 
 $(document).ready(() => {
-
   // get stored cities from local memory
   let priorCities = JSON.parse(localStorage.getItem("storedCities")) || [];
   // Loop through stored cities backwards to to add a button for each one
@@ -11,9 +10,6 @@ $(document).ready(() => {
   if (priorCities[0] != null || priorCities[0] != undefined) {
     getWeatherInfo(priorCities[0]);
   }
-  //loads the city into search on page load
-  getWeatherInfo(titleCaseConvert($("#citySearchInput").val()));
-  $("#citySearchInput").val("");
 
   // capture citySearchInput value with search button click if text is not blank
   // ajax call the Weather API to get weather data of the input city
@@ -201,18 +197,18 @@ $(document).ready(() => {
     $('#citypresent').empty()
     $('#citypresent').append(
       
-      $("<p1>").css("color","black")
+      $("<p1>").css("color","white")
       .text("5 Day Forecast for " + data.name)
     )
     $("#forecastCurrentContainer").empty();
     $("#forecastCurrentContainer")
       .append(
-        $("<h2>")
+        $("<h2>").css("color","white")
           .text(data.name)
       )
       .append(
 
-        $("<h2>")
+        $("<h2>").css("color","white")
           .text( moment().format('MMMM Do YYYY'))
           .addClass("d-inline")
       )
@@ -242,6 +238,7 @@ $(document).ready(() => {
           .text("UV index: ")
           .append($("<span>").addClass("uv-intensity alert b-1"))
       )
+
     // Get uv index
     getUVIndex(data.coord.lat, data.coord.lon);
 
