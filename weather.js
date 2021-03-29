@@ -28,8 +28,8 @@ $(document).ready(() => {
     event.preventDefault();
     if (event.keyCode === 13 && event.target.value != "") {
       getWeatherInfo(titleCaseConvert($("#citySearchInput").val()));
-
       $("#citySearchInput").val("");
+
     }
   });
 
@@ -74,6 +74,11 @@ $(document).ready(() => {
         $("#forecastExtendedContainer").append(
           $("<div>")
             .addClass("col card m-1 p-1")
+            .append(
+              $("<h4>").text(
+                moment.unix(extendedResponse.list[i].dt).format("dddd")
+              )
+            )
             .append(
               $("<h4>").text(
                 moment.unix(extendedResponse.list[i].dt).format("M/DD/YY")

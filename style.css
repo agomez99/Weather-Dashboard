@@ -54,7 +54,7 @@ h1{
   border-width: 1px;
   border-color: rgb(160, 159, 159);
   margin-right: 30px;
-  margin-bottom: 10px;
+  padding:5px;
 }
 
 .btn.btn-secondary {
@@ -98,7 +98,6 @@ h1{
     text-align: center;
     background-color: rgb(119, 177, 190);
     width:5em;
-    height:10em;
     white-space: nowrap;
     border-width: 2px;
     border-color: blanchedalmond;
@@ -245,7 +244,7 @@ h1{
       text-align: center;
       background-color: rgb(119, 177, 190);
       width:30rem;
-      height:6rem;
+      height:8rem;
     
   }
 
