@@ -74,15 +74,14 @@ $(document).ready(() => {
         $("#forecastExtendedContainer").append(
           $("<div>")
             .addClass("col card m-1 p-1")
-
             .append(
               $("<h4>").text(
-                moment.unix(extendedResponse.list[i].dt).format("MMM Do YY")
+                moment.unix(extendedResponse.list[i].dt).format("dddd")
               )
             )
             .append(
               $("<h4>").text(
-                moment.unix(extendedResponse.list[i].dt).format("dddd")
+                moment.unix(extendedResponse.list[i].dt).format("M/DD/YY")
               )
             )
             .append(
