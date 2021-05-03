@@ -250,7 +250,7 @@ $(document).ready(() => {
       )
       .append(
         $("<p>").text(
-          "Pressure: " + data.main.pressure + String.fromCharCode(37)
+          "Pressure: " + data.main.pressure 
         )
       )
 
