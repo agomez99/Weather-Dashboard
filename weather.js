@@ -74,14 +74,15 @@ $(document).ready(() => {
         $("#forecastExtendedContainer").append(
           $("<div>")
             .addClass("col card m-1 p-1")
+
             .append(
               $("<h4>").text(
-                moment.unix(extendedResponse.list[i].dt).format("dddd")
+                moment.unix(extendedResponse.list[i].dt).format("MMM Do YY")
               )
             )
             .append(
               $("<h4>").text(
-                moment.unix(extendedResponse.list[i].dt).format("M/DD/YY")
+                moment.unix(extendedResponse.list[i].dt).format("dddd")
               )
             )
             .append(
@@ -237,11 +238,21 @@ $(document).ready(() => {
           "Humidity: " + data.main.humidity + String.fromCharCode(37)
         )
       )
+      .append(
+        $("<p>").text(
+          "Feels like: " + data.main.feels_like + String.fromCharCode(176)+ "F"
+        )
+      )
       .append($("<p>").text("Wind Speed: " + data.wind.speed + " MPH"))
       .append(
         $("<p>")
           .text("UV index: ")
           .append($("<span>").addClass("uv-intensity alert b-1"))
+      )
+      .append(
+        $("<p>").text(
+          "Pressure: " + data.main.pressure + String.fromCharCode(37)
+        )
       )
 
     // Get uv index
